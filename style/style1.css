@@ -1,0 +1,132 @@
+.student-list {
+  color: #e2d5d5;
+  background-color: #865858;
+  padding: 30px;
+  margin-top: 10px;
+}
+h1 {
+  padding-left: 40px;
+}
+body {
+  background-color: #e2d5d5;
+  margin: 0px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  /* text-align: center; */
+}
+.hidden {
+  visibility: hidden;
+}
+.search-result {
+  width: 47%;
+  padding: 20px;
+  /* font-size: 1.5rem; */
+  height: 130px;
+  background-color: #8e7f7f;
+}
+
+.search-course-result {
+  width: 45%;
+  padding: 20px;
+  /* font-size: 1.5rem; */
+  height: 130px;
+  background-color: #8e7f7f;
+}
+
+.search-course-div {
+  position: relative;
+  left: 51%;
+  top: -312px;
+}
+
+.search-form {
+  padding: 40px;
+}
+.search-course-form {
+  padding: 40px;
+}
+
+.search-btn {
+  margin: 10px;
+}
+.search-course-btn {
+  margin: 10px;
+}
+.course-list {
+  background-color: #bbbbbb;
+  padding: 30px;
+  margin-top: 10px;
+  position: relative;
+  top: -300px;
+}
+
+.sort-course-list-btn {
+  position: absolute;
+  right: 20%;
+}
+.sort-student-list-btn {
+  position: absolute;
+  right: 20%;
+}
+
+.add-remove-course {
+  background-color: #8e7f7f;
+  text-align: center;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+  top: -300px;
+}
+
+.add-remove-display {
+  padding: 50px 20px 20px;
+  width: 50%;
+  text-align: left;
+}
+
+.add-remove-btn {
+  position: absolute;
+  right: 20%;
+}
+.course-list-menu-display {
+  color: #e2d5d5;
+  padding: 20px;
+  padding-top: 80px;
+  position: absolute;
+  right: 4%;
+  bottom: 40px;
+  border: #865858 dashed 1px;
+  /* background-color: #865858; */
+  height: 40%;
+  width: 35%;
+}
+.show-courses-to-assign {
+  background-color: #865858;
+  color: white;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+.messageDisplay {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #e2d5d5;
+  position: relative;
+  left: 650px;
+  top: 20px;
+
+  height: 40px;
+  margin: 20px;
+  padding: 10px;
+  width: 400px;
+}
+.remove-student {
+  background-color: #8e7f7f;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+.remove-stu {
+  margin-left: 300px;
+}
