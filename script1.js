@@ -161,7 +161,7 @@ function removeCourse(stu, course) {
   courseInput();
 }
 
-function sortByName(arr) {
+function sortCoursesByName(arr) {
   let newArr = arr.map((item) => item.name);
 
   let sorted = newArr.sort().map(function (item) {
@@ -171,9 +171,9 @@ function sortByName(arr) {
   });
   return sorted;
 }
-// console.log(sortByName(courses));
+// console.log(sortCoursesByName(courses));
 
-function sortStuByName(type, arr) {
+function sortStu(type, arr) {
   let sorted;
   let firstNames = arr.map((item) => item.firstName).sort();
   let lastNames = arr.map((item) => item.lastName).sort();
@@ -203,9 +203,9 @@ function sortStuByName(type, arr) {
 
   return sorted;
 }
-console.log(sortStuByName("id", students));
+console.log(sortStu("id", students));
 
-function sortByID(arr) {
+function sortCoursesByID(arr) {
   let newArr = arr.map(function (item) {
     let str = item.courseID;
 
@@ -225,25 +225,36 @@ function sortByID(arr) {
 
   return sorted;
 }
-console.log(sortByID(courses));
+console.log(sortCoursesByID(courses));
 
 function searchStuByName(n, arr) {
   let filtered = [];
+
   n = n.trim().toLowerCase();
 
   if (n.includes(" ")) {
     let str1 = n.slice(0, n.indexOf(" "));
     let str2 = n.slice(n.indexOf(" "));
 
-    if (
-      searchStuByName(str1, arr)[0].firstName ===
-      searchStuByName(str2, arr)[0].firstName
-    ) {
-      return searchStuByName(str1, arr);
-    } else {
-      return [searchStuByName(str1, arr), searchStuByName(str2, arr)];
-    }
-  } else {
+    return searchStuByName(str1, arr).concat(searchStuByName(str2, arr));
+  } else if (parseInt(n.trim())) {
+    return arr.filter((item) => item.studentID.includes(n));
+  }
+
+  // if (n.includes(" ")) {
+  //   let str1 = n.slice(0, n.indexOf(" "));
+  //   let str2 = n.slice(n.indexOf(" "));
+
+  //   if (
+  //     searchStuByName(str1, arr)[0].firstName ===
+  //     searchStuByName(str2, arr)[0].firstName
+  //   ) {
+  //     return searchStuByName(str1, arr);
+  //   } else {
+  //     return [searchStuByName(str1, arr), searchStuByName(str2, arr)];
+  //   }
+  // }
+  else {
     filtered = arr.filter(function (item) {
       return (
         item.firstName.toLowerCase().includes(n) ||
@@ -254,10 +265,11 @@ function searchStuByName(n, arr) {
     return filtered;
   }
 }
-console.log(searchStuByName("mintes benti tekle amen", students));
+// console.log(searchStuByName("11055", students));
 
 function consolidateArr(arr) {
   let newArr = [];
+  let map = new Map();
 
   function helper(arr) {
     for (let each of arr) {
@@ -268,13 +280,22 @@ function consolidateArr(arr) {
       }
     }
   }
-  helper(arr);
-  return newArr;
+  if (Array.isArray(arr)) helper(arr);
+  else {
+    newArr.push(arr);
+  }
+  for (let each of newArr) {
+    // let x=JSON.stringify(each);
+    if (!map.has(each)) map.set(each, 1);
+  }
+  let consolidated = [];
+  for (let each of map.keys()) {
+    consolidated.push(each);
+  }
+
+  return consolidated;
 }
-console.log(
-  consolidateArr(searchStuByName("mintes benti tekle amen", students))
-);
-// -------------------------------//------------------
+console.log(consolidateArr(searchStuByName("11055", students)));
 function searchByName(n, arr) {
   let filtered;
   n = n.trim().toLowerCase();
@@ -314,9 +335,6 @@ function displayObj(obj) {
   }
   return strDisplay;
 }
-// console.log(displayObj(courses));
-
-// ---------------------------//---------------------------
 
 function showCourse() {
   document.querySelector(".course-list-btn").textContent = "Show Course List"; //back from "update list"
@@ -410,14 +428,12 @@ function addNewStudent() {
 
   showStudents();
 }
-// ---------------------------//---------------------------
 
 function readyToDeleteStu() {
   document.querySelector(".remove-student-ID").classList.remove("hidden");
   document.querySelector(".remove-done").classList.remove("hidden");
   document.querySelector(".remove-student").classList.add("hidden");
 }
-// ---------------------------//---------------------------
 function deleteStudent() {
   let idInput = document.querySelector(".remove-student-ID").value;
   console.log(idInput);
@@ -427,15 +443,14 @@ function deleteStudent() {
 
   showStudents();
 }
-// ---------------------------//---------------------------
 function sortStudents() {
   let sortValue = document.getElementById("sort-stu").value;
   if (sortValue === "first name") {
-    displaySorted(sortStuByName("first name", students));
+    displaySorted(sortStu("first name", students));
   } else if (sortValue === "last name") {
-    displaySorted(sortStuByName("last name", students));
+    displaySorted(sortStu("last name", students));
   } else if (sortValue === "id") {
-    displaySorted(sortStuByName("id", students));
+    displaySorted(sortStu("id", students));
   }
 }
 
@@ -454,7 +469,6 @@ function displaySorted(arr) {
     ul.append(li);
   });
 }
-// ---------------------------//---------------------------
 
 function readyToAddCourse() {
   document.querySelector(".add-course-name").classList.remove("hidden");
@@ -480,15 +494,14 @@ function addNewCourse() {
 function sortCourses() {
   let sortValue = document.getElementById("sort-courses").value;
   if (sortValue === "name") {
-    let sortedByName = sortByName(courses);
+    let sortedByName = sortCoursesByName(courses);
     courseDisplay(sortedByName);
   } else if (sortValue === "id") {
-    let sortedById = sortByID(courses);
+    let sortedById = sortCoursesByID(courses);
     courseDisplay(sortedById);
   }
 }
 
-// ----
 function courseDisplay(arr) {
   let ul = document.querySelector(".list-of-courses");
   ul.innerHTML = "";
@@ -501,8 +514,6 @@ function courseDisplay(arr) {
     ul.append(li);
   });
 }
-
-//-----
 
 function showStudentCourseList() {
   // reset some elements
@@ -542,8 +553,6 @@ function showStudentCourseList() {
     .classList.remove("hidden");
 }
 
-// ------
-
 function courseInput() {
   // reset elements
   document.querySelector(".messageDisplay").innerText = "";
@@ -566,9 +575,6 @@ function courseInput() {
     form.append(document.createElement("br"));
   });
 }
-// -----
-
-// ------
 
 function pageload() {
   document.querySelector(".student-list-btn").onclick = showStudents;
