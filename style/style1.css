@@ -21,22 +21,22 @@ body {
   width: 47%;
   padding: 20px;
   /* font-size: 1.5rem; */
-  height: 130px;
+  height: 100%;
   background-color: #8e7f7f;
 }
 
 .search-course-result {
-  width: 45%;
+  width: 47%;
   padding: 20px;
   /* font-size: 1.5rem; */
-  height: 130px;
+  height: 100%;
   background-color: #8e7f7f;
 }
 
 .search-course-div {
   position: relative;
   left: 51%;
-  top: -312px;
+  top: -346px;
 }
 
 .search-form {
