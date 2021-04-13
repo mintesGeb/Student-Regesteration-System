@@ -239,22 +239,7 @@ function searchStuByName(n, arr) {
     return searchStuByName(str1, arr).concat(searchStuByName(str2, arr));
   } else if (parseInt(n.trim())) {
     return arr.filter((item) => item.studentID.includes(n));
-  }
-
-  // if (n.includes(" ")) {
-  //   let str1 = n.slice(0, n.indexOf(" "));
-  //   let str2 = n.slice(n.indexOf(" "));
-
-  //   if (
-  //     searchStuByName(str1, arr)[0].firstName ===
-  //     searchStuByName(str2, arr)[0].firstName
-  //   ) {
-  //     return searchStuByName(str1, arr);
-  //   } else {
-  //     return [searchStuByName(str1, arr), searchStuByName(str2, arr)];
-  //   }
-  // }
-  else {
+  } else {
     filtered = arr.filter(function (item) {
       return (
         item.firstName.toLowerCase().includes(n) ||
@@ -295,7 +280,7 @@ function consolidateArr(arr) {
 
   return consolidated;
 }
-console.log(consolidateArr(searchStuByName("11055", students)));
+// console.log(consolidateArr(searchStuByName("11055", students)));
 function searchByName(n, arr) {
   let filtered;
   n = n.trim().toLowerCase();
