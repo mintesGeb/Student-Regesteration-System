@@ -17,26 +17,46 @@ body {
 .hidden {
   visibility: hidden;
 }
+.search-divs {
+  margin: 10px;
+  padding: 10px;
+  /* background-color: aqua; */
+  height: 500px;
+  /* height : */
+}
 .search-result {
-  width: 47%;
+  width: 40%;
   padding: 20px;
   /* font-size: 1.5rem; */
-  height: 100%;
-  background-color: #8e7f7f;
+  height: 15%;
+  /* border: #8e7f7f dashed 1px; */
+  /* background-color: #8e7f7f; */
+  /* margin-bottom: 10px; */
+  position: relative;
+  left: 250px;
+  bottom: 160px;
 }
 
 .search-course-result {
   width: 47%;
   padding: 20px;
   /* font-size: 1.5rem; */
-  height: 100%;
-  background-color: #8e7f7f;
-}
-
-.search-course-div {
+  /* height: 80%; */
+  /* border: #8e7f7f dashed 1px; */
+  /* margin-bottom: 10px; */
   position: relative;
+  left: 250px;
+  bottom: 220px;
+  height: 180px;
+}
+.search-div {
+  margin: 0;
+}
+.search-course-div {
+  /* position: relative;
   left: 51%;
-  top: -346px;
+  top: -288px; */
+  margin-bottom: 0;
 }
 
 .search-form {
@@ -56,8 +76,8 @@ body {
   background-color: #bbbbbb;
   padding: 30px;
   margin-top: 10px;
-  position: relative;
-  top: -300px;
+  /* position: relative;
+  top: -300px; */
 }
 
 .sort-course-list-btn {
@@ -74,8 +94,8 @@ body {
   text-align: center;
   height: 100%;
   padding: 20px;
-  position: relative;
-  top: -300px;
+  /* position: relative;
+  top: -300px; */
 }
 
 .add-remove-display {
@@ -94,10 +114,11 @@ body {
   padding-top: 80px;
   position: absolute;
   right: 4%;
-  bottom: 40px;
+  top: 1050px;
+  /* bottom: -840px; */
   border: #865858 dashed 1px;
   /* background-color: #865858; */
-  height: 40%;
+  height: 35%;
   width: 35%;
 }
 .show-courses-to-assign {
@@ -129,4 +150,9 @@ body {
 }
 .remove-stu {
   margin-left: 300px;
+}
+.footer {
+  padding: 20px;
+  text-align: center;
+  height: 20%;
 }

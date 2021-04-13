@@ -59,6 +59,8 @@ class Student {
   }
 }
 
+// ...online , oncampus ....
+
 let jossy = new Student("Eyosias", "Tekle", "12045");
 let amani = new Student("Amanuel", "Benti", "17863");
 let robbie = new Student("Robbie", "Abdissa", "17143");
