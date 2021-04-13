@@ -112,14 +112,14 @@ body {
   color: #e2d5d5;
   padding: 20px;
   padding-top: 80px;
-  position: absolute;
-  right: 4%;
-  top: 1050px;
-  /* bottom: -840px; */
+  position: relative;
+  left: 130%;
+  /* top: 1350px; */
+  bottom: 380px;
   border: #865858 dashed 1px;
   /* background-color: #865858; */
-  height: 35%;
-  width: 35%;
+  height: 30%;
+  width: 40%;
 }
 .show-courses-to-assign {
   background-color: #865858;
