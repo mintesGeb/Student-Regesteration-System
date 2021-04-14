@@ -307,8 +307,6 @@ function searchByName(n, arr) {
 }
 console.log(searchByName("programming", courses));
 
-// ---------------------------//---------------------------
-
 function displayObj(obj) {
   if (Array.isArray(obj)) {
     for (let each of obj) {
@@ -338,7 +336,6 @@ function showCourse() {
 
   document.querySelector(".sort-course-list-btn").classList.remove("hidden");
 }
-// ---------------------------//---------------------------
 
 function showStudents() {
   document.querySelector(".student-list-btn").classList.add("hidden"); //back from "update list"
@@ -348,7 +345,6 @@ function showStudents() {
   document.querySelector(".sort-student-list-btn").classList.remove("hidden");
 }
 
-// ---------------------------//---------------------------
 function searchStudent(x) {
   document.querySelector(".search-result").classList.remove("hidden");
   let searchInput = document.querySelector(".search-input").value;
@@ -368,7 +364,6 @@ function searchStudent(x) {
     ul.append(li);
   });
 }
-// ---------------------------//---------------------------
 function searchCourse() {
   document.querySelector(".search-course-result").classList.remove("hidden");
   let searchInput = document.querySelector(".search-course-input").value;
@@ -387,7 +382,6 @@ function searchCourse() {
     ul.append(li);
   });
 }
-// ---------------------------//---------------------------
 
 function readyToAddStu() {
   document.querySelector(".add-first-name").classList.remove("hidden");
@@ -427,8 +421,12 @@ function deleteStudent() {
   let found = students.find((item) => item.studentID == idInput);
   console.log(found);
   found.removeStudent();
+  idInput = "";
 
   showStudents();
+  document.querySelector(".remove-student-ID").classList.add("hidden");
+  document.querySelector(".remove-done").classList.add("hidden");
+  document.querySelector(".remove-student").classList.remove("hidden");
 }
 function sortStudents() {
   let sortValue = document.getElementById("sort-stu").value;

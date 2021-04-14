@@ -156,3 +156,8 @@ body {
   text-align: center;
   height: 20%;
 }
+.log-out {
+  position: relative;
+  left: 80%;
+  top: 20px;
+}
