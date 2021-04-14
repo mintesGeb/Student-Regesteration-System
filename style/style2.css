@@ -1,0 +1,19 @@
+.show-profile {
+  /* height: 200px; */
+  /* background-color: teal; */
+}
+.show-classmates {
+  /* width: 40%; */
+}
+
+td {
+  /* border: black solid 1px; */
+  text-align: center;
+  /* height: 200px; */
+  padding-bottom: 200px;
+  width: 50%;
+}
+.student-section {
+  margin: 10px 40px;
+  width: 1200px;
+}

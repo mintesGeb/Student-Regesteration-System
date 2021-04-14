@@ -57,6 +57,17 @@ class Student {
       this.courses = [];
     }
   }
+  display() {
+    let arr = [];
+    let courseStr = "";
+    this.courses.forEach(function (item) {
+      courseStr += "\n" + item.name + "\t--\t" + item.courseID;
+    });
+    arr.push(`Name: ${this.firstName} ${this.lastName}`);
+    arr.push(`Student ID: ${this.studentID}`);
+    arr.push(`Courses:\n${courseStr}`);
+    return arr;
+  }
 }
 
 // ...online , oncampus ....
@@ -74,6 +85,7 @@ robbie.addToList();
 amani.addToList();
 halle.addToList();
 amen.addToList();
+console.log(amen.display());
 
 for (let i = 0; i < students.length; i++) {
   for (let j = i; j < courses.length; j++) {
@@ -84,6 +96,7 @@ for (let i = 0; i < students.length; i++) {
 // console.log(amen);
 // amen.removeCourse("cs303");
 // console.log(amen);
+console.log(mintes.display());
 
 function getStudentSelection() {
   let myPeopleForm = document.querySelector(".add-remove-form");
@@ -560,6 +573,31 @@ function courseInput() {
     form.append(document.createElement("br"));
   });
 }
+function showProfile() {
+  let profileInput = document.querySelector(".show-profile-input").value;
+
+  let found = students.find(function (item) {
+    return item.studentID == profileInput;
+  });
+
+  // let arr = Object.entries(found).map((item) => item[0] + ": " + item[1]);
+
+  let ul = document.querySelector(".show-profile-ul");
+  ul.style.textAlign = "left";
+  ul.style.width = "50%";
+  ul.innerHTML = "";
+  let arr = found.display();
+  arr.forEach(function (item) {
+    let li = document.createElement("li");
+    li.innerHTML = item;
+    ul.append(li);
+  });
+
+  console.log(found);
+}
+function showClassmates() {
+  alert("hi classmates");
+}
 
 function pageload() {
   document.querySelector(".student-list-btn").onclick = showStudents;
@@ -578,4 +616,6 @@ function pageload() {
   document.querySelector(".remove-course-from-stu").onclick = removeCourse;
   document.querySelector(".stu-course-list").onclick = showStudentCourseList;
   document.querySelector(".show-courses-to-assign").onclick = courseInput;
+  document.querySelector(".show-profile-btn").onclick = showProfile;
+  document.querySelector(".show-classmates-btn").onclick = showClassmates;
 }
