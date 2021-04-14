@@ -17,6 +17,8 @@ let algo = new Course("algorithms", "cs321");
 let jsb = new Course("js basics", "cs301");
 let masp = new Course("modern asynchronous programming", "cs445");
 let dbsd = new Course("databases and software development", "cs418");
+let ltm = new Course("leadership for technical managers", "stc506B");
+let wad1 = new Course("web application development 1", "cs568");
 
 oop.addToTotalList(courses);
 ssp.addToTotalList(courses);
@@ -24,15 +26,17 @@ algo.addToTotalList(courses);
 jsb.addToTotalList(courses);
 masp.addToTotalList(courses);
 dbsd.addToTotalList(courses);
+ltm.addToTotalList(courses);
+wad1.addToTotalList(courses);
 
 let students = [];
 
 class Student {
-  constructor(firstName, lastName, studentID) {
+  constructor(firstName, lastName, studentID, courses = []) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.studentID = studentID;
-    this.courses = [];
+    this.courses = courses;
   }
   addToList() {
     students.push(this);
@@ -70,6 +74,28 @@ class Student {
   }
 }
 
+class OnlineStudent extends Student {
+  constructor(firstName, lastName, studentID, onlineID, courses = []) {
+    super(firstName, lastName, studentID, courses);
+    this.onlineID = onlineID;
+  }
+}
+
+class GraduateStudent extends Student {
+  constructor(firstName, lastName, studentID, status = "", courses = []) {
+    super(firstName, lastName, studentID, courses);
+    this.status = status;
+  }
+  graduate() {
+    this.courses = [
+      {
+        name: this.firstName + " " + this.lastName,
+        courseID: "You have graduated - No more courses 👋",
+      },
+    ];
+    this.status = "graduate";
+  }
+}
 // ...online , oncampus ....
 
 let jossy = new Student("Eyosias", "Tekle", "12045");
@@ -78,6 +104,8 @@ let robbie = new Student("Robbie", "Abdissa", "17143");
 let mintes = new Student("Mintes", "Gebre", "11055");
 let halle = new Student("Halle", "Solomon", "14565");
 let amen = new Student("Amen", "Smith", "19465");
+let josh = new OnlineStudent("josh", "Samson", "45699", "321_onl");
+let john = new GraduateStudent("john", "doe", "52316");
 
 mintes.addToList();
 jossy.addToList();
@@ -85,6 +113,8 @@ robbie.addToList();
 amani.addToList();
 halle.addToList();
 amen.addToList();
+john.addToList();
+josh.addToList();
 console.log(amen.display());
 
 for (let i = 0; i < students.length; i++) {
@@ -97,6 +127,7 @@ for (let i = 0; i < students.length; i++) {
 // amen.removeCourse("cs303");
 // console.log(amen);
 console.log(mintes.display());
+john.graduate();
 
 function getStudentSelection() {
   let myPeopleForm = document.querySelector(".add-remove-form");
@@ -593,13 +624,30 @@ function showProfile() {
     ul.append(li);
   });
 
-  console.log(found);
+  // console.log(found);
 }
 function showClassmates() {
-  alert("hi classmates");
+  let profileInput = document.querySelector(".show-profile-input").value;
+
+  if (profileInput == "") {
+    alert("Please enter your ID number");
+  } else {
+    let stuCourses = students
+      .find((item) => item.studentID == profileInput)
+      .courses.map((item) => item.courseID);
+    console.log(stuCourses);
+
+    let stuName;
+    let filtered = students.map(function (item) {
+      return item.courses;
+    });
+
+    console.log(filtered);
+  }
 }
 
 function pageload() {
+  document.querySelector(".show-profile-input").value = "11055";
   document.querySelector(".student-list-btn").onclick = showStudents;
   document.querySelector(".search-btn").onclick = searchStudent;
   document.querySelector(".search-course-btn").onclick = searchCourse;

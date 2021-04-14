@@ -5,7 +5,6 @@
 .show-classmates {
   /* width: 40%; */
 }
-
 td {
   /* border: black solid 1px; */
   text-align: center;
@@ -13,7 +12,10 @@ td {
   padding-bottom: 200px;
   width: 50%;
 }
+.table-div {
+  background-color: #bbbbbb;
+}
 .student-section {
   margin: 10px 40px;
-  width: 1200px;
+  width: 90%;
 }
