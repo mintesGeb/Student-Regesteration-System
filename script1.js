@@ -647,7 +647,7 @@ function showClassmates() {
 }
 
 function pageload() {
-  document.querySelector(".show-profile-input").value = "11055";
+  // document.querySelector(".show-profile-input").value = "11055";
   document.querySelector(".student-list-btn").onclick = showStudents;
   document.querySelector(".search-btn").onclick = searchStudent;
   document.querySelector(".search-course-btn").onclick = searchCourse;
